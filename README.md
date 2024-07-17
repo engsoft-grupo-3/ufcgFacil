@@ -5,5 +5,5 @@ Idéia de projeto para a disciplina de Engenharia de Software do curso de Ciênc
 
 #### Você também é Dev?
 Se a resposta for sim, talvez essa seção te interesse! :D
-- Leia as [especificações](especificacoes.md).
-- [Guia](guia.md) para trabalhar com o controle acadêmico.
+- Leia as [especificações](dev_docs/especificacoes.md).
+- [Guia](dev_docs/guia.md) para trabalhar com o controle acadêmico.
