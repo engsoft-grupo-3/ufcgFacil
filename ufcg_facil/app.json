@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.svg",
-    "scheme": "myapp",
+    "scheme": "ufcg_facil",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
