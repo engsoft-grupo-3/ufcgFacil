@@ -1,22 +1,19 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ClassCard } from "@/components/ClassCard";
 
-
-
+import { CardsContainer, Container, HomeTitle, } from "@/styles/home";
 
 export default function Home() {
-
     return (
-        <View style={styles.container}>
-            <Text>TELA TURMAS</Text>
-        </View>
+        <Container>
+            <HomeTitle>Turmas</HomeTitle>
+
+            <CardsContainer>
+                <ClassCard />
+                <ClassCard />
+                <ClassCard />
+                <ClassCard />
+                <ClassCard />
+            </CardsContainer>
+        </Container>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        height: '100%',
-        display: 'flex',
-        justifyContent: "center",
-        alignItems: "center"
-    }
-})
