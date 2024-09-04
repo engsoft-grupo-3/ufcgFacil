@@ -1,5 +1,4 @@
-import { Slot, SplashScreen } from "expo-router";
-import { StatusBar } from "react-native";
+import { Slot, SplashScreen, Stack } from "expo-router";
 import { useFonts } from 'expo-font';
 import { ThemeProvider } from "styled-components";
 import { useEffect } from "react";
@@ -23,11 +22,6 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar
-        barStyle='dark-content'
-        backgroundColor='transparent'
-        translucent
-      />
       <Slot />
     </ThemeProvider>
   );
