@@ -22,7 +22,12 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Slot />
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="class" options={{ headerShown: false }} />
+        <Stack.Screen name="message" options={{ headerShown: false }} />
+      </Stack>
     </ThemeProvider>
   );
 }

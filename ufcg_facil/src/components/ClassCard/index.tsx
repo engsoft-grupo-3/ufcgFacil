@@ -1,11 +1,13 @@
-import { View } from "react-native";
+import { TouchableOpacityProps, View } from "react-native";
 
 import { Card, CardSubtitle, CardSubtitleContainer, CardTitle, NotificationContainer, NotificationText, ScheduleText } from "./styles";
 import { FontAwesome } from "@expo/vector-icons";
 
-export function ClassCard() {
+type Props = TouchableOpacityProps;
+
+export function ClassCard({ ...rest }: Props) {
     return (
-        <Card>
+        <Card {...rest}>
             <CardTitle>Engenharia de Software</CardTitle>
             <CardSubtitleContainer>
                 <CardSubtitle>Turma 01</CardSubtitle>

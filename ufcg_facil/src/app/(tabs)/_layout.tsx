@@ -1,14 +1,14 @@
 import { Tabs } from "expo-router";
 import { FontAwesome, FontAwesome6 } from '@expo/vector-icons';
 
-export default function Layout() {
+export default function TabLayout() {
     return (
         <Tabs screenOptions={{
             tabBarActiveBackgroundColor: "#2D1E70",
             tabBarInactiveBackgroundColor: "#2D1E70",
             tabBarStyle: { height: 80 }
         }} >
-            <Tabs.Screen name="home/index" options={{
+            <Tabs.Screen name="home" options={{
                 headerShown: false,
                 tabBarShowLabel: false,
 
@@ -17,7 +17,7 @@ export default function Layout() {
 
                 }
             }} />
-            <Tabs.Screen name="calendar/index" options={{
+            <Tabs.Screen name="calendar" options={{
                 headerShown: false,
                 tabBarShowLabel: false,
 
@@ -26,7 +26,7 @@ export default function Layout() {
 
                 }
             }} />
-            <Tabs.Screen name="messages/index" options={{
+            <Tabs.Screen name="messages" options={{
                 headerShown: false,
                 tabBarShowLabel: false,
 
@@ -35,7 +35,7 @@ export default function Layout() {
 
                 }
             }} />
-            <Tabs.Screen name="profile/index" options={{
+            <Tabs.Screen name="profile" options={{
                 headerShown: false,
                 tabBarShowLabel: false,
 
