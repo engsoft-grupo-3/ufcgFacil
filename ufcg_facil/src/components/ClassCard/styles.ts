@@ -36,7 +36,7 @@ export const CardSubtitle = styled.Text`
 export const ScheduleText = styled.Text`
     color: ${({ theme }) => theme.COLORS.PRIMARY};
     font-size: 16px;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     text-align: center;    
 `;
 

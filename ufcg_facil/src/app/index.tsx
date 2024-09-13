@@ -1,5 +1,5 @@
 import { ButtonText, Container, LoginButton, LoginCard, LoginInput, SupportText } from "@/styles/login";
-import { Image, TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { Image, TouchableOpacityProps } from "react-native";
 
 import logo from "../../assets/images/Logo.png";
 import { router } from "expo-router";

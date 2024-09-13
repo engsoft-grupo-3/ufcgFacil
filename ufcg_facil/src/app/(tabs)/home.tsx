@@ -1,7 +1,7 @@
 import { ClassCard } from "@/components/ClassCard";
 
 import { CardsContainer, Container, HomeTitle, } from "@/styles/home";
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 
 
 
@@ -17,11 +17,11 @@ export default function Home() {
             <HomeTitle>Turmas</HomeTitle>
 
             <CardsContainer>
-                <ClassCard onPress={handleNavigation} />
-                <ClassCard />
-                <ClassCard />
-                <ClassCard />
-                <ClassCard />
+                <ClassCard onPress={handleNavigation} name="Engenharia de Software" classNumber="1" code="1412314" schedule={`2 10:00 - 12:00 (CAA 201)\n5 08:00 - 10:00 (CAA201)`} />
+                <ClassCard onPress={handleNavigation} name="Engenharia de Software" classNumber="1" code="1412314" schedule={`2 10:00 - 12:00 (CAA 201)\n5 08:00 - 10:00 (CAA201)`} />
+                <ClassCard onPress={handleNavigation} name="Engenharia de Software" classNumber="1" code="1412314" schedule={`2 10:00 - 12:00 (CAA 201)\n5 08:00 - 10:00 (CAA201)`} />
+                <ClassCard onPress={handleNavigation} name="Engenharia de Software" classNumber="1" code="1412314" schedule={`2 10:00 - 12:00 (CAA 201)\n5 08:00 - 10:00 (CAA201)`} />
+                <ClassCard onPress={handleNavigation} name="Engenharia de Software" classNumber="1" code="1412314" schedule={`2 10:00 - 12:00 (CAA 201)\n5 08:00 - 10:00 (CAA201)`} />
             </CardsContainer>
         </Container>
     );
