@@ -16,6 +16,10 @@ type Props = {
 
 export default function Login({ touchableOpacityProps, textInputProps }: Props) {
 
+  function handleNavigationNoValidation() {
+    router.replace("/home");
+  }
+
   const validationSchema = yup.object().shape({
     matricula: yup.string().required('Preencha com a sua matrícula').matches(/^\d{9}$/, 'Informe uma matrícula válida'),
     password: yup.string().required('Preencha com a sua senha')
@@ -45,7 +49,7 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
             keyboardType="number-pad"
             value={values.matricula}
             onChangeText={handleChange("matricula")}
-            onBlur={handleBlur("password")}
+            onBlur={handleBlur("matricula")}
             touched={touched.matricula}
             error={errors.matricula}
             {...textInputProps}
@@ -67,7 +71,7 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
           />
           {(errors.password && touched.password) && <ErrorText>{errors.password}</ErrorText>}
         </View>
-        <LoginButton {...touchableOpacityProps} onPress={handleSubmit}>
+        <LoginButton {...touchableOpacityProps} onPress={handleNavigationNoValidation}>
           <ButtonText>Acessar</ButtonText>
         </LoginButton>
       </LoginCard>
