@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Platform } from "react-native";
+import { Platform, TextInput, TextInputProps, TouchableOpacity } from "react-native";
 
 export const Container = styled(SafeAreaView)`
     flex: 1;
@@ -40,7 +40,7 @@ export const LoginCard = styled.View`
 })}
 `;
 
-export const LoginInput = styled.TextInput.attrs(({ theme }) => ({
+export const LoginInput = styled(TextInput).attrs<TextInputProps>(({ theme }) => ({
   placeholderTextColor: theme.COLORS.TEXT_LIGHT_1
 }))`
     padding: 16px 24px;
@@ -52,7 +52,7 @@ export const LoginInput = styled.TextInput.attrs(({ theme }) => ({
     border-radius: 100px;
 `;
 
-export const LoginButton = styled.TouchableOpacity`
+export const LoginButton = styled(TouchableOpacity)`
   padding: 16px 0;
 
   background-color: ${({ theme }) => theme.COLORS.PRIMARY};
@@ -72,4 +72,8 @@ export const SupportText = styled.Text`
   font-size: 16px;
   font-weight: 700;
   color: ${({ theme }) => theme.COLORS.PRIMARY};
+`;
+
+export const ErrorText = styled.Text`
+    color: red;
 `;
