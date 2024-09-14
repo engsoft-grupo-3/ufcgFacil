@@ -16,14 +16,14 @@ import { EventStorageDTO } from "@/storage/event/EventStorageDTO";
 import { Plus } from "phosphor-react-native";
 import { Container, DateText, FAB, FABContainer, PageTitle } from "@/styles/calendar";
 
-type sectionListMeals = {
+type sectionListEvents = {
     title: string,
     data: EventStorageDTO[]
 }
 
 export default function Calendar() {
     const [isLoading, setIsLoading] = useState(true);
-    const [sectionListEvents, setSectionListEvents] = useState<sectionListMeals[]>([
+    const [sectionListEvents, setSectionListEvents] = useState<sectionListEvents[]>([
     ]);
 
     const router = useRouter();
@@ -42,7 +42,7 @@ export default function Calendar() {
                 groupBy(data, (event) => event.date.substring(0, 10))
             );
 
-            const sections: sectionListMeals[] = groupedEvents.map(d => {
+            const sections: sectionListEvents[] = groupedEvents.map(d => {
                 const parts: string[] = d[0].date.split("/");
                 const day: number = parseInt(parts[0]);
                 const month: number = parseInt(parts[1]) - 1;
