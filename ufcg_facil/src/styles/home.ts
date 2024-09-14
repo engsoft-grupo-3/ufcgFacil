@@ -13,7 +13,7 @@ export const Container = styled(SafeAreaView)`
     background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
 
-export const HomeTitle = styled.Text`
+export const PageTitle = styled.Text`
     color: ${({ theme }) => theme.COLORS.PRIMARY};
     font-weight: bold;
     font-size: 20px;

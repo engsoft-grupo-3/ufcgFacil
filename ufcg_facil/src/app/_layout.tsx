@@ -1,4 +1,4 @@
-import { Slot, SplashScreen, Stack } from "expo-router";
+import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from 'expo-font';
 import { ThemeProvider } from "styled-components";
 import { useEffect } from "react";
@@ -27,6 +27,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="class" options={{ headerShown: false }} />
         <Stack.Screen name="message" options={{ headerShown: false }} />
+        <Stack.Screen name="newEvent" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );

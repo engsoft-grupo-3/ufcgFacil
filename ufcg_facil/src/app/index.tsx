@@ -1,25 +1,77 @@
-import { ButtonText, Container, LoginButton, LoginCard, LoginInput, SupportText } from "@/styles/login";
-import { Image, TouchableOpacityProps } from "react-native";
+import { ButtonText, Container, LoginButton, LoginCard, LoginInput, SupportText, ErrorText } from "@/styles/login";
+import { Image, TextInputProps, TouchableOpacityProps, View } from "react-native";
+import * as yup from 'yup';
 
 import logo from "../../assets/images/Logo.png";
 import { router } from "expo-router";
+import { useFormik } from "formik";
 
 
 
-export default function Login({ ...rest }: TouchableOpacityProps) {
 
-  function handleNavigation() {
+type Props = {
+  touchableOpacityProps: TouchableOpacityProps;
+  textInputProps: TextInputProps
+}
+
+export default function Login({ touchableOpacityProps, textInputProps }: Props) {
+
+  function handleNavigationNoValidation() {
     router.replace("/home");
   }
+
+  const validationSchema = yup.object().shape({
+    matricula: yup.string().required('Preencha com a sua matrícula').matches(/^\d{9}$/, 'Informe uma matrícula válida'),
+    password: yup.string().required('Preencha com a sua senha')
+  })
+
+  const { handleChange, values, handleSubmit, handleBlur, errors, touched } = useFormik({
+    validationSchema,
+    initialValues: {
+      matricula: "",
+      password: ""
+    },
+    onSubmit: (values) => {
+      router.replace("/home");
+    }
+  });
+
 
   return (
     <Container>
       <Image source={logo} />
 
       <LoginCard>
-        <LoginInput placeholder="Matrícula" />
-        <LoginInput placeholder="Senha" />
-        <LoginButton {...rest} onPress={handleNavigation}>
+        <View>
+          <LoginInput
+            placeholder="Matrícula"
+            name="matricula"
+            keyboardType="number-pad"
+            value={values.matricula}
+            onChangeText={handleChange("matricula")}
+            onBlur={handleBlur("matricula")}
+            touched={touched.matricula}
+            error={errors.matricula}
+            {...textInputProps}
+          />
+          {(errors.matricula && touched.matricula) && <ErrorText>{errors.matricula}</ErrorText>}
+        </View>
+        <View>
+
+          <LoginInput
+            placeholder="Senha"
+            name="password"
+            secureTextEntry={true}
+            value={values.password}
+            onChangeText={handleChange("password")}
+            onBlur={handleBlur("password")}
+            touched={touched.password}
+            error={errors.password}
+            {...textInputProps}
+          />
+          {(errors.password && touched.password) && <ErrorText>{errors.password}</ErrorText>}
+        </View>
+        <LoginButton {...touchableOpacityProps} onPress={handleNavigationNoValidation}>
           <ButtonText>Acessar</ButtonText>
         </LoginButton>
       </LoginCard>
