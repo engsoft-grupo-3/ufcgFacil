@@ -13,7 +13,6 @@ export default function Messages() {
     return (
         <Container>
             <MessagesTitle>Mensagens</MessagesTitle>
-
             <MessageCardsContainer>
                 <MessageCard onPress={handleOpenMessage} />
                 <MessageCard />
