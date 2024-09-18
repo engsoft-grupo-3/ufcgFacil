@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { SectionList } from "react-native";
+import { SectionList, View } from "react-native";
 import { useFocusEffect, useRouter } from "expo-router";
 
 import groupBy from 'lodash.groupby';
@@ -13,8 +13,8 @@ import { eventRemoveByTitle } from "@/storage/event/eventRemoveByTitle";
 import { eventsGetAll } from "@/storage/event/eventsGetAll";
 import { EventStorageDTO } from "@/storage/event/EventStorageDTO";
 
-import { Plus } from "phosphor-react-native";
-import { Container, DateText, FAB, FABContainer, PageTitle } from "@/styles/calendar";
+import { ClipboardText, Plus } from "phosphor-react-native";
+import { Container, DateText, EmptyListContainer, EmptyListText, FAB, FABContainer, PageTitle } from "@/styles/calendar";
 
 type sectionListEvents = {
     title: string,
@@ -81,7 +81,6 @@ export default function Calendar() {
         <Container>
             <PageTitle>Agenda</PageTitle>
             {isLoading ? <Loading /> : (
-
                 <SectionList
                     style={{ width: "100%" }}
                     sections={sectionListEvents}
@@ -99,6 +98,14 @@ export default function Calendar() {
                         <DateText>
                             {title}
                         </DateText>
+                    )}
+                    ListEmptyComponent={(
+                        <EmptyListContainer>
+                            <ClipboardText size={64} color="#808080" />
+                            <EmptyListText>
+                                Comece a sua agenda!{"\n"}Marque o primeiro evento!
+                            </EmptyListText>
+                        </EmptyListContainer>
                     )}
                 />
             )}

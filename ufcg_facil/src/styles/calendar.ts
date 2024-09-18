@@ -43,3 +43,17 @@ export const DateText = styled.Text`
   font-weight: bold;
   margin-bottom: 12px;
 `;
+
+export const EmptyListContainer = styled.View`
+  flex: 1;
+  margin-top: 50%;
+  justify-content: center;
+  align-items: center;
+  row-gap: 8px;
+`;
+
+export const EmptyListText = styled.Text`
+  color: ${({ theme }) => theme.COLORS.TEXT_LIGHT_1};
+  font-size: 20px;
+  text-align: center;
+`;
