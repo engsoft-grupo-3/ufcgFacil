@@ -6,6 +6,10 @@ import logo from "../../assets/images/Logo.png";
 import { router } from "expo-router";
 import { useFormik } from "formik";
 
+import fazerLogin from "@/services/login";
+import { useContext } from "react";
+import { AuthContext } from "@/context/authContext";
+
 
 
 
@@ -20,6 +24,8 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
     router.replace("/home");
   }
 
+  const {setCookieAuth} = useContext(AuthContext);
+
   const validationSchema = yup.object().shape({
     matricula: yup.string().required('Preencha com a sua matrícula').matches(/^\d{9}$/, 'Informe uma matrícula válida'),
     password: yup.string().required('Preencha com a sua senha')
@@ -31,7 +37,8 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
       matricula: "",
       password: ""
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      await fazerLogin(values.matricula, values.password, setCookieAuth);
       router.replace("/home");
     }
   });
@@ -71,7 +78,7 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
           />
           {(errors.password && touched.password) && <ErrorText>{errors.password}</ErrorText>}
         </View>
-        <LoginButton {...touchableOpacityProps} onPress={handleNavigationNoValidation}>
+        <LoginButton {...touchableOpacityProps} onPress={handleSubmit}>
           <ButtonText>Acessar</ButtonText>
         </LoginButton>
       </LoginCard>

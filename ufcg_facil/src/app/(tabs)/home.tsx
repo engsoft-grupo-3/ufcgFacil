@@ -2,9 +2,20 @@ import { useRouter } from "expo-router";
 
 import { ClassCard } from "@/components/ClassCard";
 
+import extraiDisciplinas from "@/services/disciplinas";
+
 import { CardsContainer, Container, PageTitle, } from "@/styles/home";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "@/context/authContext";
 
 export default function Home() {
+
+    const {cookie} = useContext(AuthContext);
+
+    useEffect(() => {
+        const data = extraiDisciplinas(cookie);
+        console.log(data);
+    }, [])
 
     const router = useRouter();
 
