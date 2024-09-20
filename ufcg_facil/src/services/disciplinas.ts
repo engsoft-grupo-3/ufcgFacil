@@ -1,6 +1,9 @@
 //const { JSDOM } = require('jsdom')
 const {Parser} = require('htmlparser2');
 
+import iconv from "iconv-lite";
+import { Buffer } from "buffer";
+
 export type Disciplina = {
   codigo: string;
   horario: string;
@@ -21,11 +24,25 @@ const capturarDisciplinas = async (cookieAuth) => {
       credentials: 'include'
     })
 
+    const buffer = await response.arrayBuffer(); // Recebe os dados brutos como ArrayBuffer
+    const text = iconv.decode(Buffer.from(buffer), 'iso-8859-1'); 
+    console.log("TEXT: " + text);
+
+    // const buffer = await response.arrayBuffer(); // Recebe os dados brutos
+    // const decoder = new TextDecoder('iso-8859-1'); // Decodifica como ISO-8859-1
+    // const text = decoder.decode(buffer);
+
+    // console.log("TEXT: " + text)
+
+    // const buffer = await response.arrayBuffer(); // Recebe a resposta como ArrayBuffer
+    // const decoder = new TextDecoder('iso-8859-1'); // Usa o decoder correto para o encoding da API
+    // const text = decoder.decode(buffer);
+
     if (!response.ok) {
       throw new Error(`Erro HTTP: ${response.status}`)
     }
 
-    return await response.text()
+    return await text
   }catch (error) {
     console.error("Erro na solicitação autenticada:", error)
     throw error

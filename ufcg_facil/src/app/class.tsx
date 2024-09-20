@@ -1,14 +1,20 @@
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native";
 
 import { MessageCard } from "@/components/MessageCard";
 
 import { ArrowLeft, EnvelopeSimpleOpen } from "phosphor-react-native";
 import { Container, ClassInfoContainer, ClassInfoText, GradesCard, GradesInfo, GradesInfoNumber, GradesInfoTitle, GradesTitle, Header, HeaderTitle, MessagesTitle, MessagesTitleText, MessagesContainer } from "@/styles/class";
+import { Disciplina } from "@/services/disciplinas";
+
 
 
 export default function Class() {
-    const router = useRouter()
+    const {codigo, nome, turma} = useLocalSearchParams();
+
+    
+
+    const router = useRouter();
 
     function handleBack() {
         router.back()
@@ -17,19 +23,20 @@ export default function Class() {
     function handleOpenMessage() {
         router.push('/message');
     }
+
     return (
         <Container>
             <Header>
                 <TouchableOpacity onPress={handleBack}>
                     <ArrowLeft color="#2D1E70" weight="bold" />
                 </TouchableOpacity>
-                <HeaderTitle>Engenharia de Software</HeaderTitle>
+                <HeaderTitle>{nome}</HeaderTitle>
             </Header>
 
             <ClassInfoContainer>
-                <ClassInfoText>Turma: 01</ClassInfoText>
+                <ClassInfoText>Turma: {turma}/</ClassInfoText>
                 <ClassInfoText>Período: 2024.1</ClassInfoText>
-                <ClassInfoText>Código: 1411314</ClassInfoText>
+                <ClassInfoText>Código: {codigo}</ClassInfoText>
             </ClassInfoContainer>
 
             <GradesTitle>Notas</GradesTitle>
