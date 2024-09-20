@@ -6,7 +6,7 @@ export const Container = styled(SafeAreaView)`
 
     display: flex;
 
-    padding: 0px 16px 0px 16px;
+    padding: 24px 16px 0px 16px;
     background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
 
@@ -38,6 +38,7 @@ export const MessageInfoContainer = styled.View`
     elevation: 1;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
+    
 
     background-color: ${({ theme }) => theme.COLORS.GRAY};
 `;
@@ -55,12 +56,13 @@ export const MessageTitleContainer = styled.View`
     flex-direction: row;
     column-gap: 8px;
     align-items: center;
+    
 `;
 
 export const MessageTitle = styled.Text`
     color: ${({ theme }) => theme.COLORS.PRIMARY};
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
 `;
 
 export const MessageDescription = styled.Text`
