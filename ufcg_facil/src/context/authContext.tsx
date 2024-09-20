@@ -16,10 +16,6 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 
     const [cookie, setCookie] = useState<string>("");
 
-    useEffect(() => {
-        console.log(cookie);
-    }, [cookie])
-
     function setCookieAuth(cookie: string) {
         setCookie(cookie);
     }

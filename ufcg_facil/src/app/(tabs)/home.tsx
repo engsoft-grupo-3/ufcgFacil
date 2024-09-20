@@ -25,7 +25,6 @@ export default function Home() {
         const data = await extraiDisciplinas(cookie);
         
         setClasses(data);
-        console.log("DATA: " + data);
 
         setIsLoading(false);
     }
