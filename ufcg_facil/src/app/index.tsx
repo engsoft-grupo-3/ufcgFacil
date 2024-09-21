@@ -1,5 +1,5 @@
 import { ButtonText, Container, LoginButton, LoginCard, LoginInput, SupportText, ErrorText } from "@/styles/login";
-import { Image, TextInputProps, TouchableOpacityProps, View } from "react-native";
+import { Alert, Image, TextInputProps, TouchableOpacityProps, View } from "react-native";
 import * as yup from 'yup';
 
 import logo from "../../assets/images/Logo.png";
@@ -38,8 +38,14 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
       password: ""
     },
     onSubmit: async (values) => {
-      await fazerLogin(values.matricula, values.password, setCookieAuth);
-      router.replace("/home");
+      try{
+        await fazerLogin(values.matricula, values.password, setCookieAuth);
+        router.replace("/home");
+
+      } catch (error) {
+        Alert.alert("Login inválido", "Tente novamente");
+        
+      }
     }
   });
 
