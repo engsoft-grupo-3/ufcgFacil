@@ -1,10 +1,14 @@
 import { ButtonText, Container, LoginButton, LoginCard, LoginInput, SupportText, ErrorText } from "@/styles/login";
-import { Image, TextInputProps, TouchableOpacityProps, View } from "react-native";
+import { Alert, Image, TextInputProps, TouchableOpacityProps, View } from "react-native";
 import * as yup from 'yup';
 
 import logo from "../../assets/images/Logo.png";
 import { router } from "expo-router";
 import { useFormik } from "formik";
+
+import fazerLogin from "@/services/login";
+import { useContext } from "react";
+import { AuthContext } from "@/context/authContext";
 
 
 
@@ -20,6 +24,8 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
     router.replace("/home");
   }
 
+  const {setCookieAuth} = useContext(AuthContext);
+
   const validationSchema = yup.object().shape({
     matricula: yup.string().required('Preencha com a sua matrícula').matches(/^\d{9}$/, 'Informe uma matrícula válida'),
     password: yup.string().required('Preencha com a sua senha')
@@ -31,8 +37,15 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
       matricula: "",
       password: ""
     },
-    onSubmit: (values) => {
-      router.replace("/home");
+    onSubmit: async (values) => {
+      try{
+        await fazerLogin(values.matricula, values.password, setCookieAuth);
+        router.replace("/home");
+
+      } catch (error) {
+        Alert.alert("Login inválido", "Tente novamente");
+        
+      }
     }
   });
 
@@ -71,7 +84,7 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
           />
           {(errors.password && touched.password) && <ErrorText>{errors.password}</ErrorText>}
         </View>
-        <LoginButton {...touchableOpacityProps} onPress={handleNavigationNoValidation}>
+        <LoginButton {...touchableOpacityProps} onPress={handleSubmit}>
           <ButtonText>Acessar</ButtonText>
         </LoginButton>
       </LoginCard>

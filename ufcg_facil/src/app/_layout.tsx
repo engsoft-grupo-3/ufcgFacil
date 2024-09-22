@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { useEffect } from "react";
 
 import theme from "@/theme";
+import { AuthContextProvider } from "@/context/authContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,6 +23,7 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider theme={theme}>
+      <AuthContextProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -29,6 +31,7 @@ export default function RootLayout() {
         <Stack.Screen name="message" options={{ headerShown: false }} />
         <Stack.Screen name="newEvent" options={{ headerShown: false }} />
       </Stack>
+      </AuthContextProvider>
     </ThemeProvider>
   );
 }

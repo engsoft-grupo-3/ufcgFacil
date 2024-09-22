@@ -16,7 +16,7 @@ export const Card = styled.TouchableOpacity`
 
 export const CardTitle = styled.Text`
     color: ${({ theme }) => theme.COLORS.PRIMARY};
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 8px;
 `;

@@ -9,7 +9,7 @@ export const Container = styled(SafeAreaView)`
     align-items: center;
     row-gap: 24px;
 
-    padding: 0px 16px 0px 16px;
+    padding: 24px 16px 0px 16px;
     background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
 
