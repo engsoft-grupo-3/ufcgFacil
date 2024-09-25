@@ -24,7 +24,7 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
     router.replace("/home");
   }
 
-  const {setCookieAuth} = useContext(AuthContext);
+  const {setCookieAuth, setMatriculaContext} = useContext(AuthContext);
 
   const validationSchema = yup.object().shape({
     matricula: yup.string().required('Preencha com a sua matrícula').matches(/^\d{9}$/, 'Informe uma matrícula válida'),
@@ -40,6 +40,7 @@ export default function Login({ touchableOpacityProps, textInputProps }: Props) 
     onSubmit: async (values) => {
       try{
         await fazerLogin(values.matricula, values.password, setCookieAuth);
+        setMatriculaContext(values.matricula);
         router.replace("/home");
 
       } catch (error) {
