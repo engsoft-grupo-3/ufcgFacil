@@ -55,11 +55,12 @@ export const SubtitleContainer = styled.View`
 
 export const SubtitleContainerRow = styled.View`
     flex-direction: row;
+    align-items: baseline;
 `;
 
 export const SubtitleDescription = styled.Text`
     color: ${({ theme }) => theme.COLORS.TEXT_LIGHT_1};
-    font-size: 16px;
+    font-size: 14px;
     margin-left: 8px;
 `;
 
