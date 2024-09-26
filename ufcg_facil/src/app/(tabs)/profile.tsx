@@ -5,7 +5,7 @@ import { Container, HomeTitle, ProfileContainer, SubtitleContainer, SubtitleCont
 import { useContext, useEffect, useState } from "react";
 
 export default function Profile() {
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [perfilInfo, setPerfilInfo] = useState<Perfil>({} as Perfil);
 
     const {cookie} = useContext(AuthContext);
